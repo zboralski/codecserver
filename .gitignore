@@ -1,0 +1,20 @@
+.gobincache
+*.out
+*.test
+*.xml
+*.swp
+.idea/
+*.iml
+*.cov
+*.html
+.tmp/
+.DS_Store
+test
+test.log
+vendor/
+# Executables produced by temporal-go-samples repo
+bin/
+.fossa.yml
+*.auto.wpvars
+*.auto.wpvars.json
+
