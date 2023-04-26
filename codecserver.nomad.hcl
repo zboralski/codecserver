@@ -40,6 +40,7 @@ job "codecserver" {
         ${k} = "${v}"
         %{ endfor ~}
 
+        CORS_ORIGIN = "${cors_origin}"
         PORT = "$${NOMAD_PORT_codecserver}"
         TLS_CERT_FILE = "$${NOMAD_SECRETS_DIR}/server.pem"
         TLS_KEY_FILE = "$${NOMAD_SECRETS_DIR}/server-key.pem"

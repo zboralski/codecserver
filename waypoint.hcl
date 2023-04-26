@@ -10,7 +10,7 @@ app "codecserver" {
     registry {
       use "docker" {
         image = "belua/codecserver"
-        tag   = "1"
+        tag   = "0.1.1"
       }
     }
   }
@@ -18,6 +18,7 @@ app "codecserver" {
   deploy {
     use "nomad-jobspec" {
       jobspec = templatefile("${path.app}/codecserver.nomad.hcl", {
+        cors_origin = var.cors_origin
         hostname    = var.hostname
         datacenter  = var.datacenter
         port        = var.port
@@ -31,6 +32,11 @@ app "codecserver" {
   url {
     auto_hostname = false
   }
+}
+
+variable "cors_origin" {
+  type    = string
+  default = "http://localhost:8080"
 }
 
 variable "hostname" {

@@ -34,8 +34,9 @@ var namespaces = []string{"default", "spread"}
 func main() {
 	flag.Parse()
 
-	tlsCertFile = getFromFlagOrEnv(tlsCertFile, "TLS_CERT_FILE")
-	tlsKeyFile = getFromFlagOrEnv(tlsKeyFile, "TLS_KEY_FILE")
+	maybeEnv(&tlsCertFile, "TLS_CERT_FILE")
+	maybeEnv(&tlsKeyFile, "TLS_KEY_FILE")
+	maybeEnv(&web, "CORS_ORIGIN")
 
 	if (tlsCertFile == "") != (tlsKeyFile == "") {
 		logger.Fatal("Both TLS cert and key must be provided if either is specified")
@@ -117,11 +118,10 @@ func main() {
 	}
 }
 
-func getFromFlagOrEnv(flagValue, envKey string) string {
-	if flagValue != "" {
-		return flagValue
+func maybeEnv(s *string, key string) {
+	if val, ok := os.LookupEnv(key); ok {
+		*s = val
 	}
-	return os.Getenv(envKey)
 }
 
 // newCORSHTTPHandler wraps a HTTP handler with CORS support
