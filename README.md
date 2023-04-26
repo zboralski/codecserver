@@ -92,11 +92,11 @@ func NewClient(options client.Options) (client.Client, error) {
 
 ### Start the codec server
 
-The CORS_ORIGIN should be set to the Temporal UI URL.
+The `CORS_ORIGIN` should be set to the Temporal UI URL.
 
-The TLS_CERT_FILE and TLS_KEY_FILE environment variables are used to enable Transport Layer Security (TLS) encryption for the codecserver application. TLS is a cryptographic protocol that provides secure communication over the internet.
+The `TLS_CERT_FILE` and `TLS_KEY_FILE` environment variables are used to enable Transport Layer Security (TLS) encryption for the codecserver application. TLS is a cryptographic protocol that provides secure communication over the internet.
 
-To enable TLS, you need to set the TLS_CERT_FILE and TLS_KEY_FILE environment variables to the paths of the certificate and key files, respectively. The certificate file contains the public key, and the key file contains the private key that are used to establish a secure connection.
+To enable TLS, you need to set the `TLS_CERT_FILE` and `TLS_KEY_FILE` environment variables to the paths of the certificate and key files, respectively. The certificate file contains the public key, and the key file contains the private key that are used to establish a secure connection.
 
 Assuming you have the certificate and key files ready, you can start the codecserver application with TLS enabled using the following command:
 
